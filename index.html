@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hogwarts Magical College</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at top, #0c0d21 0%, #030308 70%);
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Ambient Magical Smoke Glow Effect */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 600px;
+            background: radial-gradient(ellipse at 50% 20%, rgba(100, 180, 255, 0.15), transparent 60%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Navigation Bar */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* Hamburger Menu Icon */
+        .menu-icon {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+        }
+        .menu-icon span {
+            width: 24px;
+            height: 2px;
+            background-color: #ffffff;
+            border-radius: 2px;
+        }
+
+        /* Logo Text based on Cinzel font */
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Main Hero Content */
+        main {
+            max-width: 800px;
+            margin: 40px auto 60px auto;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+            z-index: 5;
+        }
+
+        /* Featured Image with subtle shadow */
+        .featured-card {
+            width: 280px;
+            height: 280px;
+            margin: 0 auto 40px auto;
+            border-radius: 8px;
+            background: #000;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(93, 94, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .featured-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Serif Heading Style */
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            line-height: 1.3;
+            margin-bottom: 24px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        /* Descriptive Text */
+        .description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #b3bcd0;
+            margin-bottom: 40px;
+            font-weight: 300;
+            max-width: 680px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Large Action Button for WhatsApp redirection */
+        .action-btn {
+            display: inline-block;
+            background-color: #25D366; /* WhatsApp Green */
+            color: #ffffff;
+            text-decoration: none;
+            padding: 16px 44px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+            transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+        }
+        .action-btn:hover {
+            background-color: #20ba5a;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5);
+        }
+
+        /* Divider line */
+        hr {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+            margin: 60px 0;
+        }
+
+        /* House Section Layout */
+        .houses-section {
+            max-width: 1100px;
+            margin: 0 auto 80px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .houses-section h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        /* Unified Description for All Houses */
+        .all-houses-desc {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #b3bcd0;
+            margin-bottom: 50px;
+            font-weight: 300;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .houses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 25px;
+        }
+
+        .house-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 30px 20px;
+            transition: transform 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .house-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Individual House Glow Borders */
+        .gryffindor:hover { border-color: #ae0001; box-shadow: 0 10px 25px rgba(174, 0, 1, 0.2); }
+        .slytherin:hover { border-color: #2a623d; box-shadow: 0 10px 25px rgba(42, 98, 61, 0.2); }
+        .ravenclaw:hover { border-color: #222f5b; box-shadow: 0 10px 25px rgba(34, 47, 91, 0.2); }
+        .hufflepuff:hover { border-color: #ecb939; box-shadow: 0 10px 25px rgba(236, 185, 57, 0.2); }
+
+        .badge-container {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .badge-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .house-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .gryffindor .house-name { color: #ffeb7a; }
+        .slytherin .house-name { color: #4ade80; }
+        .ravenclaw .house-name { color: #60a5fa; }
+        .hufflepuff .house-name { color: #facc15; }
+
+        .house-traits {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #8892b0;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .house-desc {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #b3bcd0;
+            font-weight: 300;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 600px) {
+            header { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            .description { font-size: 1rem; }
+            .houses-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-left">
+            <div class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="logo">Hogwarts</div>
+        </div>
+    </header>
+
+    <main>
+        <div class="featured-card">
+            <img src="https://media.sketchfab.com/models/e564c4be96b84254aff17f3ffe7db98e/thumbnails/529b0bc6fa8d46948f58e88d2fa7e7ea/a753a2db2fa44d6e9e6b47d40b617276.jpeg" alt="Hogwarts Houses Crests Combined">
+        </div>
+
+        <h1>Hogwarts Magical College</h1>
+
+        <p class="description">
+            Welcome to your journey into the wizarding arts. Find your true destination, align with fellow witches and wizards, and uncover where your loyalties reside. Prepare your wand for the initiation.
+        </p>
+
+        <a href="https://chat.whatsapp.com/K8EnOOtv0Wi8Hfyd45j5MT" target="_blank" class="action-btn">Join Sorting Ceremony</a>
+    </main>
+
+    <hr>
+
+    <section class="houses-section">
+        <h2>The Four Historic Houses</h2>
+        
+        <p class="all-houses-desc">
+            Hogwarts is divided into four legendary houses, each founded by one of the great historical sorcerers of their age. These houses act as your community, your family, and your academic anchor throughout your time at the college. Your house assignment reflects your core values, potential, and underlying character.
+        </p>
+
+        <div class="houses-grid">
+            
+            <div class="house-card gryffindor">
+                <div class="badge-container">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS_v-Muxtc8FL2vXYylTsBo-zoCxLYZm0k2EYihRwXmA&s=10" alt="Gryffindor Crest">
+                </div>
+                <div class="house-name">Gryffindor</div>
+                <div class="house-traits">Bravery • Daring • Chivalry</div>
+                <p class="house-desc">Founded by Godric Gryffindor, this house values nerve, courage, and standing up for what is right, carrying the symbol of the noble lion.</p>
+            </div>
+
+            <div class="house-card slytherin">
+                <div class="badge-container">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLKW6Pmtf03rHtko1D766HxUBO6Rkgu2aNmyPtiBs_3A&s=10" alt="Slytherin Crest">
+                </div>
+                <div class="house-name">Slytherin</div>
+                <div class="house-traits">Ambition • Cunning • Leadership</div>
+                <p class="house-desc">Founded by Salazar Slytherin, its members are resourceful, highly ambitious, and strategic leaders driven by a collective hunger to achieve greatness.</p>
+            </div>
+
+            <div class="house-card ravenclaw">
+                <div class="badge-container">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZmXBAWIkXqYgwEI_VX6NWWI7y8AEETqyK-MiWNHPLOw&s=10" alt="Ravenclaw Crest">
+                </div>
+                <div class="house-name">Ravenclaw</div>
+                <div class="house-traits">Intelligence • Wisdom • Wit</div>
+                <p class="house-desc">Founded by Rowena Ravenclaw, this house prizes academic excellence, profound creativity, sharp curiosity, and individuality of thought.</p>
+            </div>
+
+            <div class="house-card hufflepuff">
+                <div class="badge-container">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPOLISUYZUCy2Ivk80RXNkKVO94vdA8LBZ_wY4uiE1Fw&s=10" alt="Hufflepuff Crest">
+                </div>
+                <div class="house-name">Hufflepuff</div>
+                <div class="house-traits">Loyalty • Patience • Hard Work</div>
+                <p class="house-desc">Founded by Helga Hufflepuff, this house values fair play, absolute loyalty, relentless work ethic, and unconditional kindness toward everyone.</p>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>
