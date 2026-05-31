@@ -17,7 +17,7 @@
         }
 
         body {
-            background: radial-gradient(circle at top, #0c0d21 0%, #030308 70%);
+            background: radial-gradient(circle at top, #090a16 0%, #030308 60%);
             color: #ffffff;
             font-family: 'Inter', sans-serif;
             min-height: 100vh;
@@ -25,15 +25,15 @@
             position: relative;
         }
 
-        /* Ambient Magical Smoke Glow Effect */
+        /* Top Ambient Glow */
         body::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 600px;
-            background: radial-gradient(ellipse at 50% 20%, rgba(100, 180, 255, 0.15), transparent 60%);
+            height: 500px;
+            background: radial-gradient(ellipse at 50% 10%, rgba(93, 94, 255, 0.12), transparent 50%);
             pointer-events: none;
             z-index: 1;
         }
@@ -43,7 +43,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 40px;
+            padding: 24px 20px;
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
@@ -61,11 +61,11 @@
         .menu-icon {
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 5px;
             cursor: pointer;
         }
         .menu-icon span {
-            width: 24px;
+            width: 22px;
             height: 2px;
             background-color: #ffffff;
             border-radius: 2px;
@@ -74,35 +74,64 @@
         /* Logo Text based on Cinzel font */
         .logo {
             font-family: 'Cinzel', serif;
-            font-size: 1.4rem;
-            letter-spacing: 2px;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
             color: #ffffff;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            font-weight: 700;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
         }
 
-        /* Main Hero Content */
+        /* Main Hero Content Area matching 1st Image */
         main {
             max-width: 800px;
-            margin: 40px auto 60px auto;
+            margin: 20px auto 60px auto;
             text-align: center;
-            padding: 0 20px;
+            padding: 0 24px;
             position: relative;
             z-index: 5;
         }
 
-        /* Featured Image with subtle shadow */
+        /* Showcase Wrap containing image + the glowing magical smoke ring overlay */
+        .showcase-container {
+            position: relative;
+            width: 100%;
+            max-width: 520px;
+            margin: 0 auto 30px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* The Magical Smoke Ring Overlay matching Image 1 */
+        .showcase-container::after {
+            content: '';
+            position: absolute;
+            width: 140%;
+            height: 140%;
+            background-image: url('https://user-images.githubusercontent.com/105306361/268470557-04b341f2-1ffb-42be-bc7c-3f26792ca8a1.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            pointer-events: none;
+            opacity: 0.65;
+            mix-blend-mode: screen;
+            z-index: 2;
+        }
+
+        /* Main Hero Card */
         .featured-card {
-            width: 280px;
-            height: 280px;
-            margin: 0 auto 40px auto;
-            border-radius: 8px;
+            width: 270px;
+            height: 270px;
+            border-radius: 4px;
             background: #000;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(93, 94, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            position: relative;
+            z-index: 1;
         }
 
         .featured-card img {
@@ -111,63 +140,67 @@
             object-fit: cover;
         }
 
-        /* Serif Heading Style */
+        /* Main Headline Text matching First Image styling */
         h1 {
             font-family: 'Cinzel', serif;
-            font-size: 2.5rem;
-            line-height: 1.3;
-            margin-bottom: 24px;
+            font-size: 2.3rem;
+            line-height: 1.25;
+            margin-bottom: 25px;
             font-weight: 500;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             color: #ffffff;
-        }
-
-        /* Descriptive Text */
-        .description {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: #b3bcd0;
-            margin-bottom: 40px;
-            font-weight: 300;
-            max-width: 680px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        /* Large Action Button for WhatsApp redirection */
+        /* Descriptive Text body */
+        .description {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #b3bcd0;
+            margin-bottom: 35px;
+            font-weight: 400;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        /* Vibrant Action Button matching the blue styling from image 1 */
         .action-btn {
             display: inline-block;
-            background-color: #25D366; /* WhatsApp Green */
+            background-color: #4b4df4; 
             color: #ffffff;
             text-decoration: none;
-            padding: 16px 44px;
-            border-radius: 30px;
+            padding: 15px 55px;
+            border-radius: 25px;
             font-weight: 600;
-            font-size: 1rem;
-            letter-spacing: 1px;
+            font-size: 0.95rem;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+            box-shadow: 0 4px 20px rgba(75, 77, 244, 0.4);
             transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
         }
         .action-btn:hover {
-            background-color: #20ba5a;
-            transform: translateY(-2px);
-            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5);
+            background-color: #3b3dd1;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 25px rgba(75, 77, 244, 0.6);
         }
 
-        /* Divider line */
+        /* Section Separator Line */
         hr {
             border: 0;
             height: 1px;
-            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
-            margin: 60px 0;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.08), transparent);
+            margin: 50px 0;
         }
 
-        /* House Section Layout */
+        /* Houses Area Layout */
         .houses-section {
             max-width: 1100px;
             margin: 0 auto 80px auto;
-            padding: 0 20px;
+            padding: 0 24px;
             text-align: center;
         }
 
@@ -175,12 +208,11 @@
             font-family: 'Cinzel', serif;
             font-size: 2rem;
             margin-bottom: 15px;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
         }
 
-        /* Unified Description for All Houses */
         .all-houses-desc {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             line-height: 1.6;
             color: #b3bcd0;
             margin-bottom: 50px;
@@ -197,30 +229,30 @@
         }
 
         .house-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 30px 20px;
-            transition: transform 0.3s, border-color 0.3s;
+            background: rgba(255, 255, 255, 0.015);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 8px;
+            padding: 35px 20px;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
         
         .house-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
         }
 
-        /* Individual House Glow Borders */
-        .gryffindor:hover { border-color: #ae0001; box-shadow: 0 10px 25px rgba(174, 0, 1, 0.2); }
-        .slytherin:hover { border-color: #2a623d; box-shadow: 0 10px 25px rgba(42, 98, 61, 0.2); }
-        .ravenclaw:hover { border-color: #222f5b; box-shadow: 0 10px 25px rgba(34, 47, 91, 0.2); }
-        .hufflepuff:hover { border-color: #ecb939; box-shadow: 0 10px 25px rgba(236, 185, 57, 0.2); }
+        /* House Specific Hover Glow Accent Effects */
+        .gryffindor:hover { border-color: #ae0001; box-shadow: 0 12px 30px rgba(174, 0, 1, 0.15); }
+        .slytherin:hover { border-color: #2a623d; box-shadow: 0 12px 30px rgba(42, 98, 61, 0.15); }
+        .ravenclaw:hover { border-color: #222f5b; box-shadow: 0 12px 30px rgba(34, 47, 91, 0.15); }
+        .hufflepuff:hover { border-color: #ecb939; box-shadow: 0 12px 30px rgba(236, 185, 57, 0.15); }
 
         .badge-container {
-            width: 120px;
-            height: 120px;
-            margin-bottom: 20px;
+            width: 110px;
+            height: 110px;
+            margin-bottom: 22px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -234,7 +266,7 @@
 
         .house-name {
             font-family: 'Cinzel', serif;
-            font-size: 1.4rem;
+            font-size: 1.35rem;
             margin-bottom: 8px;
             letter-spacing: 1px;
         }
@@ -245,7 +277,7 @@
         .hufflepuff .house-name { color: #facc15; }
 
         .house-traits {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             color: #8892b0;
@@ -255,16 +287,16 @@
 
         .house-desc {
             font-size: 0.9rem;
-            line-height: 1.5;
+            line-height: 1.55;
             color: #b3bcd0;
             font-weight: 300;
         }
 
-        /* Mobile Responsiveness */
+        /* Mobile Viewports styling */
         @media (max-width: 600px) {
-            header { padding: 20px; }
-            h1 { font-size: 1.8rem; }
-            .description { font-size: 1rem; }
+            h1 { font-size: 1.75rem; }
+            .description { font-size: 0.95rem; }
+            .showcase-container::after { width: 160%; height: 160%; }
             .houses-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -283,8 +315,10 @@
     </header>
 
     <main>
-        <div class="featured-card">
-            <img src="https://media.sketchfab.com/models/e564c4be96b84254aff17f3ffe7db98e/thumbnails/529b0bc6fa8d46948f58e88d2fa7e7ea/a753a2db2fa44d6e9e6b47d40b617276.jpeg" alt="Hogwarts Houses Crests Combined">
+        <div class="showcase-container">
+            <div class="featured-card">
+                <img src="https://media.sketchfab.com/models/e564c4be96b84254aff17f3ffe7db98e/thumbnails/529b0bc6fa8d46948f58e88d2fa7e7ea/a753a2db2fa44d6e9e6b47d40b617276.jpeg" alt="Hogwarts Houses Crests Combined">
+            </div>
         </div>
 
         <h1>Hogwarts Magical College</h1>
